@@ -49,7 +49,7 @@ window.STUDIO = {
   headline: "Games with a loose screw.",
   intro: "Stubborn little sims, physics chaos and the odd nightmare. Here's what's on Steam right now, with plenty more on the way.",
   about: "Black Ribbon Studios is an independent game studio. We like games you can feel in your hands: bodies that won't do what you tell them, worlds that react when you poke them, and jokes that only work because the physics is real.\n\nSome of our games are cosy. Some are cruel. A couple are both. If one of them looks like your kind of thing, wishlist it, follow along, or just tell us what you think.",
-  email: "studiosblackribbon@gmail.com",
+  // Messages from the contact form go to the inbox set in contact-worker/src/index.js
   // Social links: paste the full address. Empty ones are hidden.
   social: {
     youtube: "https://www.youtube.com/@BlackRibbonGames",

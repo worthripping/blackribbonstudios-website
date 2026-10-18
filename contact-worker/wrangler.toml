@@ -1,0 +1,20 @@
+# Contact form for blackribbonstudios.com. Deployed automatically by Cloudflare
+# (Workers Builds) whenever this folder changes on main.
+name = "blackribbon-contact"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Runs on the website's own address, so the form posts to /api/contact.
+routes = [
+  { pattern = "blackribbonstudios.com/api/contact", zone_name = "blackribbonstudios.com" },
+  { pattern = "www.blackribbonstudios.com/api/contact", zone_name = "blackribbonstudios.com" }
+]
+
+# Lets the Worker send email to the studio inbox (a verified Email Routing destination).
+[[send_email]]
+name = "CONTACT"
+destination_address = "studiosblackribbon@gmail.com"
+
+[observability]
+enabled = true
