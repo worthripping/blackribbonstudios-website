@@ -63,12 +63,9 @@ window.STUDIO = {
 };
 
 /* "More on the way" cards: mystery projects shown without naming them.
-   Change the hints, add or remove cards, or set TEASERS = [] to hide the section. */
-window.TEASERS = [
-  { code: "BR-02", hint: "Rubber bodies. Bad decisions." },
-  { code: "BR-03", hint: "Never trust your co-op partner." },
-  { code: "BR-04", hint: "Dress warm." }
-];
+   Empty = the section is hidden. To bring it back, add cards like:
+   { code: "BR-02", hint: "Rubber bodies. Bad decisions." } */
+window.TEASERS = [];
 
 window.GAMES = [
   {

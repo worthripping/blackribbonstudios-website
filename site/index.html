@@ -467,8 +467,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261018-3"></script>
-<script src="clover-field.js?v=20261018-3"></script>
+<script src="games.js?v=20261018-4"></script>
+<script src="clover-field.js?v=20261018-4"></script>
 <script>
 (function () {
   "use strict";
@@ -737,6 +737,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
       '<rect x="136" y="74" width="28" height="42" fill="#050506"/><rect x="141" y="79" width="7" height="32" fill="var(--facet-2)"/>' +
       '<text class="q" x="72" y="118" text-anchor="middle">?</text><text class="q" x="228" y="118" text-anchor="middle">?</text></svg>';
   }
+  var soonLink = document.querySelector('.nav a[href="#soon"]');
+  if (soonLink) soonLink.hidden = !TEASERS.length;
   if (TEASERS.length) {
     $("#soon").hidden = false;
     $("#soon-count").textContent = TEASERS.length + (TEASERS.length === 1 ? " project" : " projects") + " in the works";
@@ -877,7 +879,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
   $("#copy-mail").addEventListener("click", function () { copyText(email, "Email copied"); });
 
   /* ---------- Ribbon ---------- */
-  var unit = "Black Ribbon Studios  ✦  " + GAMES.map(function (g) { return g.title; }).concat(["On Steam", "More on the way"]).join("  ✦  ") + "  ✦  ";
+  var unit = "Black Ribbon Studios  ✦  " + GAMES.map(function (g) { return g.title; }).concat(TEASERS.length ? ["On Steam", "More on the way"] : ["On Steam"]).join("  ✦  ") + "  ✦  ";
   var tp = $("#ribbon-text");
   tp.textContent = unit + unit + unit;
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
