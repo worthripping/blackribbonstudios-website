@@ -14,3 +14,7 @@ every time this repository changes, usually within a minute.
 ## Cloudflare
 Pages project connected to this repository. Build command: none. Build output directory: `site`.
 Custom domains: blackribbonstudios.com and www.blackribbonstudios.com.
+
+## How updates work
+Change files, commit, push to `main`. Cloudflare Pages picks up the push and publishes it to
+blackribbonstudios.com within about a minute. Nothing needs uploading by hand.
