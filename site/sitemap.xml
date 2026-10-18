@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://blackribbonstudios.com/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://blackribbonstudios.com/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/capsule.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/logo.png</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-01.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-02.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-03.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-04.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-05.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-06.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-07.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-08.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-09.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-10.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-11.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-12.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-13.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://blackribbonstudios.com/images/four-leaf-clover/trailer-poster.jpg</video:thumbnail_loc>
+      <video:title>Find the Four Leaf Clover trailer</video:title>
+      <video:description>Official trailer for Find the Four Leaf Clover. One field. Millions of clovers. Exactly one of them has four leaves.</video:description>
+      <video:content_loc>https://blackribbonstudios.com/videos/four-leaf-clover-trailer-wishlist.mp4</video:content_loc>
+      <video:publication_date>2026-10-18</video:publication_date>
+    </video:video>
+  </url>
 </urlset>

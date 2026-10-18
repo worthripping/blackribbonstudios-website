@@ -11,7 +11,8 @@ every time this repository changes, usually within a minute.
   `?v=` number on their `<script>` tags so returning visitors get the new version.
 
 ## Cloudflare
-Pages project connected to this repository. Build command: none. Build output directory: `site`.
+Pages project connected to this repository. Build command: `node tools/build-seo.mjs`.
+Build output directory: `site`.
 Custom domains: blackribbonstudios.com and www.blackribbonstudios.com.
 
 ## How updates work
@@ -29,3 +30,12 @@ Destination addresses first.
 
 ## Email
 hello@blackribbonstudios.com forwards to studiosblackribbon@gmail.com (Cloudflare Email Routing).
+
+## Search engines (SEO)
+`tools/build-seo.mjs` runs on every deploy. From `site/games.js` it writes the page title and
+descriptions, Google's structured data (studio, website and each game with screenshots and
+trailer), plain-HTML copies of the text for crawlers that don't run JavaScript, and
+`site/sitemap.xml` (with images and the trailer). It only rewrites the parts of `index.html`
+between `<!-- seo:... -->` markers, so don't remove those. Run it locally with
+`node tools/build-seo.mjs` to preview.
+The site is registered in Google Search Console and Bing Webmaster Tools.

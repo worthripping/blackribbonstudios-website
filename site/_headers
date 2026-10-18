@@ -1,0 +1,9 @@
+# Keep the backup address (*.pages.dev) out of search results; only blackribbonstudios.com should show up.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/videos/*
+  Cache-Control: public, max-age=31536000, immutable
