@@ -467,8 +467,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261018-2"></script>
-<script src="clover-field.js?v=20261018-2"></script>
+<script src="games.js?v=20261018-3"></script>
+<script src="clover-field.js?v=20261018-3"></script>
 <script>
 (function () {
   "use strict";
@@ -668,7 +668,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
     var firstShot = fItems.length && fItems[0].type !== "image" ? 1 : 0;
     var shotItems = fItems.slice(firstShot);
     var visible = shotItems.slice(0, 4);
-    var facts = [["Platforms", (feat.platforms || []).join(", ")], ["Genre", feat.genre], ["Status", STATUS[statusOf(feat)].label]]
+    var facts = [["Platforms", (feat.platforms || []).join(", ")], ["Players", feat.players], ["Genre", feat.genre], ["Status", STATUS[statusOf(feat)].label]]
       .filter(function (f) { return f[1]; })
       .map(function (f) { return "<div><dt>" + f[0] + "</dt><dd>" + esc(f[1]) + "</dd></div>"; }).join("");
     $("#detail").innerHTML =
@@ -765,7 +765,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
       return '<button type="button" data-viewer="' + esc(g.id) + '" data-index="' + i + '" aria-label="' + (it.type === "image" ? "Screenshot" : "Trailer") + " " + (i + 1) + '"' + (it.type !== "image" ? ' class="is-video"' : "") +
         '><img src="' + esc(it.thumb) + '" alt="" loading="lazy"></button>';
     }).join("") + "</div>" : "";
-    var facts = [["Status", STATUS[statusOf(g)].label], ["Genre", g.genre], ["Platforms", (g.platforms || []).join(", ")], ["Tags", (g.tags || []).join(", ")]]
+    var facts = [["Status", STATUS[statusOf(g)].label], ["Genre", g.genre], ["Players", g.players], ["Platforms", (g.platforms || []).join(", ")], ["Tags", (g.tags || []).join(", ")]]
       .filter(function (f) { return f[1]; })
       .map(function (f) { return "<div><dt>" + f[0] + "</dt><dd>" + esc(f[1]) + "</dd></div>"; }).join("");
     var trailerBtn = g.trailer && !items.some(function (it) { return it.type !== "image"; }) && safeUrl(g.trailer) ? '<a class="btn" href="' + esc(g.trailer) + '" target="_blank" rel="noopener">Watch the trailer</a>' : "";

@@ -27,6 +27,7 @@
      pitch     one or two sentences for the card
      about     longer text for the game's popup. Blank line = new paragraph.
      platforms list, e.g. ["PC", "Steam Deck"]
+     players   e.g. "1–4 (solo or online co-op)", shown with the game's facts
      tags      list of short labels
      cover     image file in the /images folder, e.g. "images/greyhaven.jpg"
                (16:10 or 16:9 works best). Leave "" to use the poster style.
@@ -82,12 +83,14 @@ window.GAMES = [
     pitch: "One field. Millions of clovers. Exactly one of them has four leaves.",
     about: "Somewhere in this field is a single four-leaf clover. Everything else has three. Pick clovers, sell them, and upgrade from bare hands to scissors to tools that have no business being anywhere near a clover patch.\n\nThe dowsing rod, the dog and the drone are out there too, if you can afford them. Finding it will take a while. That's the point.",
     platforms: ["PC"],
-    tags: ["Singleplayer", "Relaxing", "Upgrades"],
+    players: "1–4 (solo or online co-op)",
+    tags: ["Solo or online co-op", "1–4 players", "Relaxing", "Upgrades"],
     features: [
       "One huge field, and exactly one four-leaf clover in it",
       "Pick clovers and sell them to pay for upgrades",
       "Work your way up from bare hands to scissors and faster tools",
       "Save up for the dowsing rod, the dog and the drone",
+      "Hunt alone or with up to three friends in online co-op",
       "Takes a while to find. That's the whole point"
     ],
     cover: "images/four-leaf-clover/capsule.jpg",
@@ -107,7 +110,7 @@ window.GAMES = [
       "images/four-leaf-clover/shots/shot-12.jpg",
       "images/four-leaf-clover/shots/shot-13.jpg"
     ],
-    trailer: "videos/four-leaf-clover-trailer.mp4",
+    trailer: "videos/four-leaf-clover-trailer-wishlist.mp4",
     trailerPoster: "images/four-leaf-clover/trailer-poster.jpg",
     trailerCredit: "Music: \"Celebration\" by Alexander Nakarada (alexandernakarada.com), CC BY 4.0",
     // Paste the store page link here, e.g. "https://store.steampowered.com/app/1234567/"
