@@ -106,7 +106,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
 /* Status pill */
-.pill { display: inline-flex; align-items: center; gap: 7px; box-sizing: border-box; height: 28px; font: 500 12px/14px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 0 12px 0 10px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; flex: none; }
+.pill { display: inline-flex; align-items: center; gap: 7px; box-sizing: border-box; height: 28px; font: 500 12px/14px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 0 12px 0 10px; border-radius: 999px; border: 1.5px solid currentColor; background: color-mix(in srgb, currentColor 14%, transparent); white-space: nowrap; flex: none; }
 .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
 .pill.out, .pill.demo { color: var(--pill-out); }
 .pill.soon { color: var(--pill-soon); }
@@ -467,8 +467,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261018-5"></script>
-<script src="clover-field.js?v=20261018-5"></script>
+<script src="games.js?v=20261018-6"></script>
+<script src="clover-field.js?v=20261018-6"></script>
 <script>
 (function () {
   "use strict";
