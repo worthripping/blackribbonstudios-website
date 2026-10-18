@@ -52,7 +52,7 @@ window.STUDIO = {
   email: "studiosblackribbon@gmail.com",
   // Social links: paste the full address. Empty ones are hidden.
   social: {
-    youtube: "",
+    youtube: "https://www.youtube.com/@BlackRibbonGames",
     x: "",
     reddit: "",
     tiktok: "",
