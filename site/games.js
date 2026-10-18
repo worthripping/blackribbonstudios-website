@@ -37,6 +37,7 @@
      trailer   a video file (e.g. "videos/greyhaven-trailer.mp4", keep it under 25 MB
                for Cloudflare) or a YouTube link
      trailerPoster  still image shown before the trailer plays
+     trailerDate    day the trailer came out, e.g. "2026-10-18" (helps Google show it in video results)
      trailerCredit  line shown under the trailer (music credits etc.)
      heroLogo  transparent logo image shown at the top of the page instead of the title
      links     store links, e.g. steam: "https://store.steampowered.com/app/1234567/"
@@ -109,6 +110,7 @@ window.GAMES = [
     ],
     trailer: "videos/four-leaf-clover-trailer-wishlist.mp4",
     trailerPoster: "images/four-leaf-clover/trailer-poster.jpg",
+    trailerDate: "2026-10-18",  // day the trailer was published (for Google video results)
     trailerCredit: "Music: \"Celebration\" by Alexander Nakarada (alexandernakarada.com), CC BY 4.0",
     // Paste the store page link here, e.g. "https://store.steampowered.com/app/1234567/"
     links: { steam: "", itch: "" },
