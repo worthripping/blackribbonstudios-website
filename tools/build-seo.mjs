@@ -31,6 +31,14 @@ const steamOf = (g) => (g.links && g.links.steam) || "";
 let lastmod;
 try { lastmod = execSync("git log -1 --format=%cs", { stdio: ["ignore", "pipe", "ignore"] }).toString().trim(); } catch {}
 if (!/^\d{4}-\d\d-\d\d$/.test(lastmod || "")) lastmod = new Date().toISOString().slice(0, 10);
+// When a file was first added to the project (full date and time with timezone, as Google wants).
+function addedAt(file) {
+  try {
+    const out = execSync(`git log --diff-filter=A --follow --format=%cI -- "site/${file}"`, { stdio: ["ignore", "pipe", "ignore"] }).toString().trim().split("\n").pop();
+    if (/^\d{4}-\d\d-\d\dT/.test(out)) return out;
+  } catch {}
+  return lastmod + "T12:00:00+00:00";
+}
 
 // ---- page title and descriptions
 const gameList = GAMES.map((g) => g.title);
@@ -83,7 +91,7 @@ const games = GAMES.map((g) => {
     description: `Official trailer for ${g.title}. ${g.pitch || ""}`.trim(),
     thumbnailUrl: abs(g.trailerPoster || g.cover || "og.png"),
     contentUrl: abs(g.trailer),
-    uploadDate: lastmod
+    uploadDate: addedAt(g.trailer)
   } : null;
   const game = {
     "@type": "VideoGame",
@@ -153,7 +161,7 @@ const videoTags = GAMES.filter((g) => g.trailer && isVideoFile(g.trailer)).map((
       <video:title>${esc(g.title)} trailer</video:title>
       <video:description>${esc(`Official trailer for ${g.title}. ${g.pitch || ""}`.trim())}</video:description>
       <video:content_loc>${esc(abs(g.trailer))}</video:content_loc>
-      <video:publication_date>${lastmod}</video:publication_date>
+      <video:publication_date>${addedAt(g.trailer)}</video:publication_date>
     </video:video>`);
 writeFileSync(new URL("sitemap.xml", root), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
