@@ -75,7 +75,7 @@ a { color: inherit; }
   padding-left: max(20px, env(safe-area-inset-left, 0px));
   padding-right: max(20px, env(safe-area-inset-right, 0px));
 }
-.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.eyebrow { font: 500 12px/14px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 h1, h2, h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .005em; margin: 0; text-wrap: balance; line-height: .92; }
 
 /* Header */
@@ -106,8 +106,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 
 /* Status pill */
-.pill { display: inline-flex; align-items: center; gap: 7px; font: 500 11.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px 6px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
-.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill { display: inline-flex; align-items: center; gap: 7px; box-sizing: border-box; height: 28px; font: 500 12px/14px var(--mono); letter-spacing: .1em; text-transform: uppercase; padding: 0 12px 0 10px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; flex: none; }
+.pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: none; }
 .pill.out, .pill.demo { color: var(--pill-out); }
 .pill.soon { color: var(--pill-soon); }
 .pill.dev { color: var(--pill-dev); }
@@ -467,8 +467,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261018-4"></script>
-<script src="clover-field.js?v=20261018-4"></script>
+<script src="games.js?v=20261018-5"></script>
+<script src="clover-field.js?v=20261018-5"></script>
 <script>
 (function () {
   "use strict";
@@ -661,7 +661,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
   setupHero();
 
   /* ---------- The game in detail ---------- */
-  $("#game-count").textContent = GAMES.length + (GAMES.length === 1 ? " game" : " games") + " from Black Ribbon Studios";
+  $("#game-count").textContent = (GAMES.length === 1 ? "A game" : GAMES.length + " games") + " from Black Ribbon Studios";
   $("#empty").hidden = GAMES.length > 0;
   if (feat) {
     var fItems = mediaItems(feat);
