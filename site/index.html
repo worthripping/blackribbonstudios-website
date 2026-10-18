@@ -235,7 +235,7 @@ dialog.viewer::backdrop { background: rgba(0,0,0,.85); }
 .empty { padding: 40px 0; color: var(--muted); }
 
 /* ---------- More on the way (mystery cards) ---------- */
-.soon { border-top: 1px solid var(--line); }
+.soon-sec { border-top: 1px solid var(--line); }
 .teaser { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); min-width: 0; outline: none; transition: transform .25s, border-color .25s; }
 .teaser:hover, .teaser:focus-visible { transform: translateY(-4px); border-color: color-mix(in srgb, var(--ink) 30%, transparent); }
 .teaser:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
@@ -404,7 +404,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
     </div>
   </section>
 
-  <section class="section soon" id="soon" aria-labelledby="soon-title" hidden>
+  <section class="section soon-sec" id="soon" aria-labelledby="soon-title" hidden>
     <div class="wrap">
       <div class="sec-head">
         <div class="stack">
@@ -467,8 +467,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261018-8"></script>
-<script src="clover-field.js?v=20261018-8"></script>
+<script src="games.js?v=20261018-9"></script>
+<script src="clover-field.js?v=20261018-9"></script>
 <script>
 (function () {
   "use strict";
