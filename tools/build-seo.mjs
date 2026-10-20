@@ -154,6 +154,14 @@ fill("about", aboutHTML);
 fill("detail", detailHTML);
 writeFileSync(new URL("index.html", root), html);
 
+// the privacy page's own "Last updated" date
+const privacyDate = (() => {
+  const m = read("privacy.html").match(/Last updated: (\d{1,2}) (\w+) (\d{4})/);
+  if (!m) return lastmod;
+  const mon = ["January","February","March","April","May","June","July","August","September","October","November","December"].indexOf(m[2]) + 1;
+  return mon ? `${m[3]}-${String(mon).padStart(2, "0")}-${m[1].padStart(2, "0")}` : lastmod;
+})();
+
 // ---- sitemap with images and the trailer, so they can show up in image and video search
 const imageTags = GAMES.flatMap((g) => [g.cover, g.heroLogo, ...(g.shots || [])].filter(Boolean).filter((s) => !isVideoFile(s)))
   .map((s) => `    <image:image><image:loc>${esc(abs(s))}</image:loc></image:image>`);
@@ -172,6 +180,10 @@ writeFileSync(new URL("sitemap.xml", root), `<?xml version="1.0" encoding="UTF-8
     <loc>${SITE}/</loc>
     <lastmod>${lastmod}</lastmod>
 ${[...imageTags, ...videoTags].join("\n")}
+  </url>
+  <url>
+    <loc>${SITE}/privacy</loc>
+    <lastmod>${privacyDate}</lastmod>
   </url>
 </urlset>
 `);

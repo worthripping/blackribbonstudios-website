@@ -326,6 +326,9 @@ dialog.viewer::backdrop { background: rgba(0,0,0,.85); }
 .socials a:hover span { color: var(--ink); }
 .site-foot { background: var(--ribbon); color: var(--muted); border-top: 1px solid var(--line); }
 .site-foot .wrap { padding-block: 22px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; font: 400 12.5px/1.4 var(--mono); letter-spacing: .04em; }
+.site-foot a { color: var(--muted); }
+.site-foot a:hover { color: var(--ink); }
+.cform .note a { color: var(--muted); }
 .site-foot .brandline { display: flex; align-items: center; gap: 12px; }
 .site-foot .brandline img { width: 28px; height: 28px; border-radius: 6px; }
 
@@ -629,7 +632,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
           <p class="form-err" id="c-err" role="alert"></p>
           <div class="send">
             <button class="btn primary" type="submit" id="c-send">Send message</button>
-            <span class="note">We usually reply within a few days.</span>
+            <span class="note">We usually reply within a few days. We only use your details to answer you (<a href="/privacy#contact-data">privacy</a>).</span>
           </div>
         </form>
         <div class="sent" id="contact-sent" hidden tabindex="-1">
@@ -646,7 +649,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 <footer class="site-foot">
   <div class="wrap">
     <span class="brandline"><img src="images/brand/mark-512.png" alt="" width="28" height="28"><span id="copyright"></span></span>
-    <span>Made with stubbornness and too much coffee.</span>
+    <span><a href="/privacy">Privacy policy</a> · Made with stubbornness and too much coffee.</span>
   </div>
 </footer>
 
