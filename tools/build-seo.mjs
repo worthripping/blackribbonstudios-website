@@ -45,7 +45,7 @@ function addedAt(file) {
 const gameList = GAMES.map((g) => g.title);
 const title = feat ? `${NAME} · Indie games · ${feat.title}` : `${NAME} · Indie game studio`;
 const description = feat
-  ? `${NAME} is an indie game studio. ${feat.title}: ${feat.pitch} ${steamOf(feat) ? "Out now on Steam." : "Coming soon to Steam."}`
+  ? `${NAME} is an indie game studio. ${feat.title}: ${feat.pitch} ${!steamOf(feat) ? "Coming soon to Steam." : feat.status === "out" ? "Out now on Steam." : "Wishlist it on Steam."}`
   : `${NAME} is an independent game studio making games for Steam.`;
 const shortDesc = feat ? `${STUDIO.headline || ""} ${feat.title}: ${feat.pitch}`.trim() : description;
 

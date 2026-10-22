@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- seo:head -->
 <title>Black Ribbon Studios · Indie games · Find the Four Leaf Clover</title>
-<meta name="description" content="Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Coming soon to Steam.">
+<meta name="description" content="Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Wishlist it on Steam.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Black Ribbon Studios">
 <link rel="canonical" href="https://blackribbonstudios.com/">
@@ -410,7 +410,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
    "description": "Black Ribbon Studios is an independent game studio. We like games you can feel in your hands: bodies that won't do what you tell them, worlds that react when you poke them, and jokes that only work because the physics is real.",
    "sameAs": [
     "https://www.youtube.com/@BlackRibbonGames",
-    "https://blackribbonstudios.itch.io"
+    "https://blackribbonstudios.itch.io",
+    "https://store.steampowered.com/app/5458410/Find_the_Four_Leaf_Clover/"
    ]
   },
   {
@@ -432,7 +433,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
    "@id": "https://blackribbonstudios.com/#page",
    "url": "https://blackribbonstudios.com/",
    "name": "Black Ribbon Studios · Indie games · Find the Four Leaf Clover",
-   "description": "Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Coming soon to Steam.",
+   "description": "Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Wishlist it on Steam.",
    "isPartOf": {
     "@id": "https://blackribbonstudios.com/#website"
    },
@@ -442,7 +443,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
    "mainEntity": {
     "@id": "https://blackribbonstudios.com/#four-leaf-clover"
    },
-   "dateModified": "2026-10-18"
+   "dateModified": "2026-10-20"
   },
   {
    "@type": "VideoGame",
@@ -501,7 +502,10 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
     "thumbnailUrl": "https://blackribbonstudios.com/images/four-leaf-clover/trailer-poster.jpg",
     "contentUrl": "https://blackribbonstudios.com/videos/four-leaf-clover-trailer-wishlist.mp4",
     "uploadDate": "2026-10-18T12:00:00+00:00"
-   }
+   },
+   "sameAs": [
+    "https://store.steampowered.com/app/5458410/Find_the_Four_Leaf_Clover/"
+   ]
   }
  ]
 }
@@ -561,7 +565,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 <div class="media"><div class="shots"><img src="images/four-leaf-clover/thumbs/shot-01.jpg" alt="Find the Four Leaf Clover screenshot 1" loading="lazy" width="640" height="360"><img src="images/four-leaf-clover/thumbs/shot-02.jpg" alt="Find the Four Leaf Clover screenshot 2" loading="lazy" width="640" height="360"><img src="images/four-leaf-clover/thumbs/shot-03.jpg" alt="Find the Four Leaf Clover screenshot 3" loading="lazy" width="640" height="360"><img src="images/four-leaf-clover/thumbs/shot-04.jpg" alt="Find the Four Leaf Clover screenshot 4" loading="lazy" width="640" height="360"></div></div>
 <div class="copy">
 <h3>Find the Four Leaf Clover</h3>
-<p class="g-intro">First-person search sim · Coming soon to Steam</p>
+<p class="g-intro">First-person search sim · Coming soon</p>
 <p class="g-intro">Somewhere in this field is a single four-leaf clover. Everything else has three. Pick clovers, sell them, and upgrade from bare hands to scissors to tools that have no business being anywhere near a clover patch.</p><p class="g-intro">The dowsing rod, the dog and the drone are out there too, if you can afford them. Finding it will take a while. That's the point.</p>
 <ul class="features"><li><i aria-hidden="true"></i><span>One huge field, and exactly one four-leaf clover in it</span></li><li><i aria-hidden="true"></i><span>Pick clovers and sell them to pay for upgrades</span></li><li><i aria-hidden="true"></i><span>Work your way up from bare hands to scissors and faster tools</span></li><li><i aria-hidden="true"></i><span>Save up for the dowsing rod, the dog and the drone</span></li><li><i aria-hidden="true"></i><span>Hunt alone or with up to three friends in online co-op</span></li><li><i aria-hidden="true"></i><span>Takes a while to find. That's the whole point</span></li></ul>
 <p class="g-intro">Platforms: PC · Players: 1–4 (solo or online co-op)</p>
@@ -670,8 +674,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261018-12"></script>
-<script src="clover-field.js?v=20261018-12"></script>
+<script src="games.js?v=20261022-1"></script>
+<script src="clover-field.js?v=20261022-1"></script>
 <script>
 (function () {
   "use strict";
@@ -768,9 +772,14 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
       '<span class="ct-title' + (g.title.length > 16 ? " long" : "") + '">' + esc(g.title) + "</span></div></div>";
   }
 
+  // Tag Steam links so Steamworks' UTM report shows how many visits came from this site.
+  function steamLink(u) {
+    if (!u || !/^https:\/\/store\.steampowered\.com\//.test(u) || /utm_source=/.test(u)) return u;
+    return u + (u.indexOf("?") < 0 ? "?" : "&") + "utm_source=blackribbonstudios.com&utm_medium=website&utm_campaign=studio_site";
+  }
   function storeButtons(g, big) {
     var L = g.links || {}, out = [], s = statusOf(g);
-    var steam = safeUrl(L.steam), itch = safeUrl(L.itch);
+    var steam = steamLink(safeUrl(L.steam)), itch = safeUrl(L.itch);
     if (steam) out.push('<a class="btn ' + (big ? "accent" : "primary") + '" href="' + esc(steam) + '" target="_blank" rel="noopener">' + STEAM_ICON.replace("<svg", '<svg width="18" height="18"') +
       (s === "out" ? "Get it on Steam" : "Wishlist on Steam") + "</a>");
     if (itch) out.push('<a class="btn' + (steam ? "" : " primary") + '" href="' + esc(itch) + '" target="_blank" rel="noopener">' +
@@ -786,7 +795,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
   $("#copyright").textContent = "© " + new Date().getFullYear() + " " + (STUDIO.name || "Black Ribbon Studios");
   var soc = STUDIO.social || {};
   $("#socials").innerHTML = SOCIAL.filter(function (s) { return safeUrl(soc[s[0]]); }).map(function (s) {
-    return '<li><a href="' + esc(soc[s[0]]) + '" target="_blank" rel="noopener">' + s[1] + "<span>Follow ↗</span></a></li>";
+    var label = s[0] === "steam" ? "Wishlist ↗" : "Follow ↗";
+    return '<li><a href="' + esc(steamLink(soc[s[0]])) + '" target="_blank" rel="noopener">' + s[1] + "<span>" + label + "</span></a></li>";
   }).join("");
 
   /* ---------- Hero: the featured game ---------- */

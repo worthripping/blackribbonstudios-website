@@ -59,7 +59,7 @@ window.STUDIO = {
     tiktok: "",
     instagram: "",
     itch: "https://blackribbonstudios.itch.io",
-    steam: ""
+    steam: "https://store.steampowered.com/app/5458410/Find_the_Four_Leaf_Clover/"
   }
 };
 
@@ -113,7 +113,7 @@ window.GAMES = [
     trailerDate: "2026-10-18",  // day the trailer was published (for Google video results)
     trailerCredit: "Music: \"Celebration\" by Alexander Nakarada (alexandernakarada.com), CC BY 4.0",
     // Paste the store page link here, e.g. "https://store.steampowered.com/app/1234567/"
-    links: { steam: "", itch: "" },
+    links: { steam: "https://store.steampowered.com/app/5458410/Find_the_Four_Leaf_Clover/", itch: "" },
     art: { bg: "#1E4A2A", fg: "#D6F08C", band: "#0D0E11", bandFg: "#D6F08C" }
   }
 ];
