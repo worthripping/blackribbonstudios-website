@@ -39,3 +39,10 @@ trailer), plain-HTML copies of the text for crawlers that don't run JavaScript, 
 between `<!-- seo:... -->` markers, so don't remove those. Run it locally with
 `node tools/build-seo.mjs` to preview.
 The site is registered in Google Search Console and Bing Webmaster Tools.
+
+## Visitor statistics
+Every page ends with a small script that counts the visit without cookies and sends it to the
+owner's dashboard at worthripping.com/stats/ (both sites in one place, signed in with Google). It's a
+copy of `src/js/visits.js` in the worthripping repository: when that changes, paste the new version
+into `site/index.html`, `site/privacy.html` and `site/404.html` (the 404 page's tag has `data-nf`).
+Open blackribbonstudios.com/?wr-ignore=1 once in each of your browsers so your own visits aren't counted.

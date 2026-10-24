@@ -1164,5 +1164,145 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(startRibbon); else startRibbon();
 })();
 </script>
+<!-- Visit counter for our own statistics, without cookies (see /privacy#visits). A copy of src/js/visits.js in the worthripping repository. -->
+<script data-to="https://worthripping.com/api/v">
+(function () {
+try {
+var w = window, d = document, n = navigator, loc = location;
+var me = d.currentScript;
+var to = (me && me.getAttribute('data-to')) || '/api/v';
+var store = null;
+try {
+store = w.localStorage;
+var m = /[?&]wr-ignore=([01])/.exec(loc.search);
+if (m) m[1] === '1' ? store.setItem('wr-ignore', '1') : store.removeItem('wr-ignore');
+if (store.getItem('wr-ignore') === '1') return;
+} catch (e) {}
+if (!n.sendBeacon || !w.JSON) return;
+var IDLE = 30000;
+var now = function () { return Date.now(); };
+var id, t0, mark, engaged, depth, acts, acted, vis, seen, sentKey, lastSearch;
+function start() {
+id = Math.random().toString(36).slice(2, 10) + now().toString(36).slice(-6);
+t0 = mark = now();
+engaged = 0; depth = 0; acts = []; acted = 0; sentKey = ''; lastSearch = '';
+vis = seen = d.visibilityState === 'visible';
+measure();
+}
+function counted(t) { return vis ? Math.max(0, Math.min(t - mark, IDLE)) : 0; }
+function active() {
+var t = now();
+engaged += counted(t);
+mark = t;
+}
+function measure() {
+var h = Math.max(d.documentElement.scrollHeight, d.body ? d.body.scrollHeight : 0);
+var p = h > 0 ? Math.round(Math.min(1, ((w.scrollY || 0) + w.innerHeight) / h) * 100) : 100;
+if (p > depth) depth = p;
+}
+function act(kind, label) {
+if (acts.length < 30 && label) acts.push([kind, String(label).slice(0, 120)]);
+}
+function send() {
+if (!seen) return;
+var t = now();
+var e = engaged + counted(t);
+if (lastSearch) {
+act('search', lastSearch);
+lastSearch = '';
+}
+var key = Math.round(e / 1000) + '|' + depth + '|' + acts.length + '|' + acted;
+if (key === sentKey) return;
+sentKey = key;
+var body = {
+i: id,
+p: loc.pathname,
+q: loc.search.slice(0, 400),
+r: d.referrer.slice(0, 600),
+e: e,
+d: t - t0,
+s: depth,
+a: acts,
+w: w.innerWidth,
+l: n.language || '',
+x: acted,
+b: n.webdriver ? 1 : 0,
+m: n.maxTouchPoints > 1 ? 1 : 0,
+g: me && me.hasAttribute('data-nf') ? 1 : 0,
+};
+try {
+n.sendBeacon(to, JSON.stringify(body));
+} catch (e2) {}
+}
+var busy = false;
+function moved(ev) {
+if (ev && ev.type !== 'mousemove') acted = 1;
+if (busy) return;
+busy = true;
+setTimeout(function () {
+busy = false;
+}, 1000);
+active();
+}
+var opts = { passive: true, capture: true };
+['pointerdown', 'keydown', 'touchstart', 'wheel', 'mousemove'].forEach(function (type) {
+w.addEventListener(type, moved, opts);
+});
+var ticking = false;
+w.addEventListener('scroll', function () {
+acted = 1;
+moved();
+if (ticking) return;
+ticking = true;
+(w.requestAnimationFrame || setTimeout)(function () {
+ticking = false;
+measure();
+});
+}, opts);
+d.addEventListener('click', function (ev) {
+var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+if (!a) return;
+var u = new URL(a.href, loc.href);
+if ((u.protocol === 'http:' || u.protocol === 'https:') && u.hostname !== loc.hostname) {
+var parts = u.pathname.split('/').filter(Boolean);
+act('out', u.hostname.replace(/^www\./, '') + (/steampowered|itch\.io|youtube|reddit/.test(u.hostname) && parts.length ? '/' + parts.slice(0, 2).join('/') : ''));
+} else if (u.protocol === 'mailto:') act('out', 'email');
+}, opts);
+d.addEventListener('play', function (ev) {
+var v = ev.target;
+var src = (v && (v.currentSrc || v.src)) || '';
+act('play', src.split('/').pop().split('?')[0] || 'video');
+}, true);
+d.addEventListener('submit', function (ev) {
+var f = ev.target;
+var q = f && f.querySelector ? f.querySelector('input[type=search], input[name=q]') : null;
+if (q && q.value.trim()) {
+lastSearch = '';
+act('search', q.value.trim().toLowerCase().slice(0, 60));
+} else act('form', (f && (f.id || f.getAttribute('action'))) || 'form');
+}, true);
+d.addEventListener('input', function (ev) {
+var el = ev.target;
+if (el && (el.type === 'search' || el.name === 'q') && el.value.trim().length > 1) lastSearch = el.value.trim().toLowerCase().slice(0, 60);
+}, true);
+function hidden() {
+active();
+vis = false;
+send();
+}
+d.addEventListener('visibilitychange', function () {
+if (d.visibilityState === 'visible') {
+vis = seen = true;
+mark = now();
+} else hidden();
+});
+w.addEventListener('pagehide', hidden);
+w.addEventListener('pageshow', function (ev) {
+if (ev.persisted) start();
+});
+start();
+} catch (e) {}
+})();
+</script>
 </body>
 </html>

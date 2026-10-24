@@ -111,14 +111,14 @@ code { font: 400 .9em var(--mono); background: var(--surface); border: 1px solid
   <div class="wrap doc">
     <span class="eyebrow">Black Ribbon Studios</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 20 October 2026</p>
+    <p class="updated">Last updated: 24 October 2026</p>
 
     <section class="summary" aria-labelledby="short">
       <h2 id="short">The short version</h2>
       <ul class="plain">
         <li><span>Our games don't collect anything about you. There are no accounts, analytics, ads or trackers, and nothing is sent to us.</span></li>
         <li><span>Steam features (achievements, friends, co-op) are run by Valve under the Steam Privacy Policy.</span></li>
-        <li><span>Our website has no cookies, analytics or ads.</span></li>
+        <li><span>Our website has no cookies or ads. It counts visits without cookies and without storing your IP address, so we see which pages are read and how people find us, but can't recognise anyone.</span></li>
         <li><span>If you write to us, we use your name and email only to reply. We never sell or share it.</span></li>
         <li><span>You can ask us to show, correct or delete what we have about you at any time.</span></li>
       </ul>
@@ -177,8 +177,10 @@ code { font: 400 .9em var(--mono); background: var(--surface); border: 1px solid
     </ul>
 
     <h2 id="website">4. Our website</h2>
-    <h3>No cookies, analytics or ads</h3>
-    <p>This website doesn't set cookies, run analytics or show ads. It doesn't track you across sites.</p>
+    <h3>No cookies or ads</h3>
+    <p>This website doesn't set cookies or show ads, and it doesn't track you across sites.</p>
+    <h3 id="visits">Counting visits</h3>
+    <p>To see which pages are read and how people find the site, each page sends a short note when you leave it or switch away: the page, where you came from (such as a search engine or a link), how long the page was on your screen, how far you scrolled, which links you followed and whether you played a trailer. It goes to our own statistics, kept with Cloudflare (at worthripping.com, another site of ours). <strong>Your IP address is not stored.</strong> Visits are only told apart within one day, by a code made from your IP address and browser together with a random value that changes every day, so nobody can be recognised the day after. We use these numbers only to improve the site; they aren't shared or used for ads.</p>
     <h3>Things saved in your own browser</h3>
     <p>The clover hunt at the top of the homepage saves your best time in your browser's local storage, so it's there next time you visit. The site also remembers small display choices, such as which games you filtered. It stays on your device and is never sent to us. Clearing your browser's site data removes it.</p>
     <h3>Hosting (Cloudflare)</h3>
@@ -251,5 +253,145 @@ code { font: 400 .9em var(--mono); background: var(--surface); border: 1px solid
   </div>
 </footer>
 <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+<!-- Visit counter for our own statistics, without cookies (see /privacy#visits). A copy of src/js/visits.js in the worthripping repository. -->
+<script data-to="https://worthripping.com/api/v">
+(function () {
+try {
+var w = window, d = document, n = navigator, loc = location;
+var me = d.currentScript;
+var to = (me && me.getAttribute('data-to')) || '/api/v';
+var store = null;
+try {
+store = w.localStorage;
+var m = /[?&]wr-ignore=([01])/.exec(loc.search);
+if (m) m[1] === '1' ? store.setItem('wr-ignore', '1') : store.removeItem('wr-ignore');
+if (store.getItem('wr-ignore') === '1') return;
+} catch (e) {}
+if (!n.sendBeacon || !w.JSON) return;
+var IDLE = 30000;
+var now = function () { return Date.now(); };
+var id, t0, mark, engaged, depth, acts, acted, vis, seen, sentKey, lastSearch;
+function start() {
+id = Math.random().toString(36).slice(2, 10) + now().toString(36).slice(-6);
+t0 = mark = now();
+engaged = 0; depth = 0; acts = []; acted = 0; sentKey = ''; lastSearch = '';
+vis = seen = d.visibilityState === 'visible';
+measure();
+}
+function counted(t) { return vis ? Math.max(0, Math.min(t - mark, IDLE)) : 0; }
+function active() {
+var t = now();
+engaged += counted(t);
+mark = t;
+}
+function measure() {
+var h = Math.max(d.documentElement.scrollHeight, d.body ? d.body.scrollHeight : 0);
+var p = h > 0 ? Math.round(Math.min(1, ((w.scrollY || 0) + w.innerHeight) / h) * 100) : 100;
+if (p > depth) depth = p;
+}
+function act(kind, label) {
+if (acts.length < 30 && label) acts.push([kind, String(label).slice(0, 120)]);
+}
+function send() {
+if (!seen) return;
+var t = now();
+var e = engaged + counted(t);
+if (lastSearch) {
+act('search', lastSearch);
+lastSearch = '';
+}
+var key = Math.round(e / 1000) + '|' + depth + '|' + acts.length + '|' + acted;
+if (key === sentKey) return;
+sentKey = key;
+var body = {
+i: id,
+p: loc.pathname,
+q: loc.search.slice(0, 400),
+r: d.referrer.slice(0, 600),
+e: e,
+d: t - t0,
+s: depth,
+a: acts,
+w: w.innerWidth,
+l: n.language || '',
+x: acted,
+b: n.webdriver ? 1 : 0,
+m: n.maxTouchPoints > 1 ? 1 : 0,
+g: me && me.hasAttribute('data-nf') ? 1 : 0,
+};
+try {
+n.sendBeacon(to, JSON.stringify(body));
+} catch (e2) {}
+}
+var busy = false;
+function moved(ev) {
+if (ev && ev.type !== 'mousemove') acted = 1;
+if (busy) return;
+busy = true;
+setTimeout(function () {
+busy = false;
+}, 1000);
+active();
+}
+var opts = { passive: true, capture: true };
+['pointerdown', 'keydown', 'touchstart', 'wheel', 'mousemove'].forEach(function (type) {
+w.addEventListener(type, moved, opts);
+});
+var ticking = false;
+w.addEventListener('scroll', function () {
+acted = 1;
+moved();
+if (ticking) return;
+ticking = true;
+(w.requestAnimationFrame || setTimeout)(function () {
+ticking = false;
+measure();
+});
+}, opts);
+d.addEventListener('click', function (ev) {
+var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+if (!a) return;
+var u = new URL(a.href, loc.href);
+if ((u.protocol === 'http:' || u.protocol === 'https:') && u.hostname !== loc.hostname) {
+var parts = u.pathname.split('/').filter(Boolean);
+act('out', u.hostname.replace(/^www\./, '') + (/steampowered|itch\.io|youtube|reddit/.test(u.hostname) && parts.length ? '/' + parts.slice(0, 2).join('/') : ''));
+} else if (u.protocol === 'mailto:') act('out', 'email');
+}, opts);
+d.addEventListener('play', function (ev) {
+var v = ev.target;
+var src = (v && (v.currentSrc || v.src)) || '';
+act('play', src.split('/').pop().split('?')[0] || 'video');
+}, true);
+d.addEventListener('submit', function (ev) {
+var f = ev.target;
+var q = f && f.querySelector ? f.querySelector('input[type=search], input[name=q]') : null;
+if (q && q.value.trim()) {
+lastSearch = '';
+act('search', q.value.trim().toLowerCase().slice(0, 60));
+} else act('form', (f && (f.id || f.getAttribute('action'))) || 'form');
+}, true);
+d.addEventListener('input', function (ev) {
+var el = ev.target;
+if (el && (el.type === 'search' || el.name === 'q') && el.value.trim().length > 1) lastSearch = el.value.trim().toLowerCase().slice(0, 60);
+}, true);
+function hidden() {
+active();
+vis = false;
+send();
+}
+d.addEventListener('visibilitychange', function () {
+if (d.visibilityState === 'visible') {
+vis = seen = true;
+mark = now();
+} else hidden();
+});
+w.addEventListener('pagehide', hidden);
+w.addEventListener('pageshow', function (ev) {
+if (ev.persisted) start();
+});
+start();
+} catch (e) {}
+})();
+</script>
 </body>
 </html>
