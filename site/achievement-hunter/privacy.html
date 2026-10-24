@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Achievement Hunter for Steam Privacy Policy · Black Ribbon Studios</title>
+<meta name="description" content="How the Achievement Hunter for Steam browser extension handles your data. Short version: everything stays in your browser, and nothing is sent to us.">
+<link rel="canonical" href="https://blackribbonstudios.com/achievement-hunter/privacy">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Black Ribbon Studios">
+<meta property="og:title" content="Achievement Hunter for Steam Privacy Policy · Black Ribbon Studios">
+<meta property="og:url" content="https://blackribbonstudios.com/achievement-hunter/privacy">
+<meta property="og:image" content="https://blackribbonstudios.com/og.png">
+<meta name="theme-color" content="#0E0F12">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700;800&family=Hanken+Grotesk:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #0E0F12; --surface: #16181D; --ink: #ECEEF1; --muted: #9BA1AC; --line: #272B32;
+  --accent: #8E9CFF; --lime: #D6F08C; --cream: #F4F1EA; --ribbon: #050506;
+  --display: "Saira Condensed", "Arial Narrow", "Impact", sans-serif;
+  --body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.7 var(--body); }
+a { color: var(--ink); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--accent) 70%, transparent); }
+a:hover { color: var(--accent); }
+.wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
+.site-head { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand .tile { width: 40px; height: 40px; border-radius: 9px; }
+.brand .word { height: 30px; width: auto; }
+.back { font: 500 13px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+main { padding-block: clamp(40px, 7vw, 88px) clamp(56px, 8vw, 104px); }
+.doc { max-width: 760px; }
+.eyebrow { font: 500 12.5px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--lime); }
+h1 { font: 800 clamp(52px, 9vw, 104px)/.9 var(--display); text-transform: uppercase; margin: 16px 0 18px; }
+.updated { font: 400 14px/1.4 var(--mono); color: var(--muted); margin: 0 0 32px; }
+.summary { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: clamp(20px, 3.5vw, 32px); margin: 0 0 48px; }
+.summary h2 { margin-top: 0; font-size: 28px; }
+.summary ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.summary li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; }
+.summary li::before { content: ""; width: 10px; height: 10px; margin-top: 9px; border-radius: 50%; background: var(--lime); }
+nav.toc { margin: 0 0 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; }
+nav.toc p { margin: 0 0 10px; font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+nav.toc ol { margin: 0; padding-left: 22px; columns: 2 260px; column-gap: 32px; }
+nav.toc li { padding: 3px 0; break-inside: avoid; }
+nav.toc a { text-decoration: none; color: var(--muted); }
+nav.toc a:hover { color: var(--ink); }
+h2 { font: 800 clamp(30px, 4.4vw, 40px)/1 var(--display); text-transform: uppercase; margin: 56px 0 16px; scroll-margin-top: 84px; }
+h3 { font: 700 19px/1.35 var(--body); margin: 30px 0 8px; color: var(--cream); }
+p { margin: 0 0 14px; }
+.doc ul:not(.plain) { padding-left: 22px; margin: 0 0 14px; }
+.doc li { margin-bottom: 6px; }
+.muted { color: var(--muted); }
+code { font: 400 .9em var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; overflow-wrap: anywhere; }
+.table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; font-size: 15.5px; }
+.table th, .table td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); }
+.table th { font: 500 11.5px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.table td:first-child { font-weight: 600; width: 32%; }
+.contact-card { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1px solid var(--line); }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn.primary:hover { background: var(--lime); border-color: var(--lime); color: var(--bg); }
+.btn:hover { border-color: var(--muted); }
+.site-foot { background: var(--ribbon); color: var(--muted); border-top: 1px solid var(--line); }
+.site-foot .wrap { padding-block: 22px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; font: 400 12.5px/1.4 var(--mono); letter-spacing: .04em; }
+.site-foot a { color: var(--muted); }
+.site-foot a:hover { color: var(--ink); }
+.site-foot .brandline { display: flex; align-items: center; gap: 12px; }
+.site-foot .brandline img { width: 28px; height: 28px; border-radius: 6px; }
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .brand .tile { width: 34px; height: 34px; border-radius: 8px; }
+  .brand .word { height: 24px; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table thead { display: none; }
+  .table tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+  .table td { border: 0; padding: 2px 0; }
+  .table td:first-child { width: 100%; }
+}
+@media print {
+  .site-head, .site-foot, nav.toc { display: none; }
+  body { background: #fff; color: #000; }
+  .summary { background: none; border-color: #ccc; }
+  h3, .muted, .eyebrow { color: #000; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Black Ribbon Studios home">
+      <img class="tile" src="/images/brand/mark-512.png" alt="" width="40" height="40">
+      <img class="word" src="/images/brand/wordmark-light.png" alt="Black Ribbon Studios" width="119" height="30">
+    </a>
+    <a class="back" href="/">← Back to the site</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap doc">
+    <span class="eyebrow">Achievement Hunter for Steam · Browser extension</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: 24 October 2026</p>
+
+    <section class="summary" aria-labelledby="short">
+      <h2 id="short">The short version</h2>
+      <ul class="plain">
+        <li><span>Achievement Hunter keeps everything in your own browser. Nothing about you or your Steam account is sent to us.</span></li>
+        <li><span>It only talks to Steam, to read the achievement pages you open and your own games page.</span></li>
+        <li><span>No accounts, no analytics, no ads, no trackers. We never sell or share anything.</span></li>
+        <li><span>If you buy Pro, ExtensionPay and Stripe handle the payment. We never see your card details.</span></li>
+      </ul>
+    </section>
+
+    <h2 id="what">What Achievement Hunter for Steam is</h2>
+    <p>Achievement Hunter for Steam is a browser extension made by Black Ribbon Studios. It adds rarity tiers, filters, guide links, a hunt list and a “My games” overview to Steam Community achievement pages. It isn't affiliated with or endorsed by Valve. Steam is a trademark of Valve Corporation.</p>
+
+    <h2 id="not">What we don't collect</h2>
+    <ul>
+      <li>We don't collect your browsing history, your Steam login, your Steam ID or the content of any page.</li>
+      <li>We don't use analytics, trackers or advertising in the extension.</li>
+      <li>We don't sell or share data with anyone.</li>
+    </ul>
+
+    <h2 id="device">What stays on your device</h2>
+    <p>The extension saves these in your browser's extension storage, on your own computer:</p>
+    <ul>
+      <li>Your settings, such as your default sort. If you've turned on sync in your browser, your browser may sync these between your own devices.</li>
+      <li>Your hunt list: the achievements you pin.</li>
+      <li>“My games”: your games, their achievement lists and your progress, read from your own Steam pages.</li>
+      <li>A temporary copy of public achievement data from Steam, so pages load faster.</li>
+    </ul>
+    <p>You can remove games and pins on the extension's Hunt list and My games pages, or remove everything by uninstalling the extension.</p>
+
+    <h2 id="network">Who the extension talks to</h2>
+    <table class="table">
+      <thead><tr><th>Where</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>steamcommunity.com</td><td>To read the achievement data on the page you're viewing, and the English version of that game's public achievement page so “possibly missable” warnings work in every language. The English page is loaded without your Steam cookies.</td></tr>
+        <tr><td>Your own Steam games page</td><td>Every few hours while you're logged in to Steam, to bring your games and achievement progress into “My games”. This stays in your browser.</td></tr>
+        <tr><td>Your friends' Steam pages</td><td>Your Steam friends list and your friends' public games pages, when you open My games, to show the games you have in common and how far each of you is. And for the game you're looking at, the public achievement pages of friends Steam lists as having played it, to show who's ahead and to compare. Only what their own privacy settings already let you see, and kept in your browser for an hour.</td></tr>
+        <tr><td>Steam's image servers</td><td>To load achievement icons and game images.</td></tr>
+        <tr><td>extensionpay.com</td><td>Only to check whether you've bought Pro.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="payments">Payments</h2>
+    <p>Pro is a one-time purchase handled by <a href="https://extensionpay.com" rel="noopener">ExtensionPay</a> and <a href="https://stripe.com" rel="noopener">Stripe</a>. We never see your card details. ExtensionPay tells the extension whether you've paid and which email address you used, so you can restore Pro in another browser. Their own privacy policies cover the payment itself.</p>
+
+    <h2 id="rights">Your choices</h2>
+    <p>Because your data stays in your browser, you're in control of it: delete games or pins in the extension, or uninstall it to remove everything. For anything about a Pro purchase, such as a refund or the email you paid with, write to us and we'll help.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>If the extension starts handling data differently, we'll update this page and the date at the top before that version is released.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions about Achievement Hunter or your data? Get in touch:</p>
+    <div class="contact-card">
+      <a class="btn primary" href="mailto:studiosblackribbon@gmail.com">studiosblackribbon@gmail.com</a>
+      <a class="btn" href="/privacy">Studio privacy policy</a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="brandline"><img src="/images/brand/mark-512.png" alt="" width="28" height="28"><span>© <span id="yr">2026</span> Black Ribbon Studios</span></span>
+    <span><a href="/">Home</a> · <a href="/privacy">Privacy</a></span>
+  </div>
+</footer>
+<script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+<!-- Visit counter for our own statistics, without cookies (see /privacy#visits). A copy of src/js/visits.js in the worthripping repository. -->
+<script data-to="https://worthripping.com/api/v">
+(function () {
+try {
+var w = window, d = document, n = navigator, loc = location;
+var me = d.currentScript;
+var to = (me && me.getAttribute('data-to')) || '/api/v';
+var store = null;
+try {
+store = w.localStorage;
+var m = /[?&]wr-ignore=([01])/.exec(loc.search);
+if (m) m[1] === '1' ? store.setItem('wr-ignore', '1') : store.removeItem('wr-ignore');
+if (store.getItem('wr-ignore') === '1') return;
+} catch (e) {}
+if (!n.sendBeacon || !w.JSON) return;
+var IDLE = 30000;
+var now = function () { return Date.now(); };
+var id, t0, mark, engaged, depth, acts, acted, vis, seen, sentKey, lastSearch;
+function start() {
+id = Math.random().toString(36).slice(2, 10) + now().toString(36).slice(-6);
+t0 = mark = now();
+engaged = 0; depth = 0; acts = []; acted = 0; sentKey = ''; lastSearch = '';
+vis = seen = d.visibilityState === 'visible';
+measure();
+}
+function counted(t) { return vis ? Math.max(0, Math.min(t - mark, IDLE)) : 0; }
+function active() {
+var t = now();
+engaged += counted(t);
+mark = t;
+}
+function measure() {
+var h = Math.max(d.documentElement.scrollHeight, d.body ? d.body.scrollHeight : 0);
+var p = h > 0 ? Math.round(Math.min(1, ((w.scrollY || 0) + w.innerHeight) / h) * 100) : 100;
+if (p > depth) depth = p;
+}
+function act(kind, label) {
+if (acts.length < 30 && label) acts.push([kind, String(label).slice(0, 120)]);
+}
+function send() {
+if (!seen) return;
+var t = now();
+var e = engaged + counted(t);
+if (lastSearch) {
+act('search', lastSearch);
+lastSearch = '';
+}
+var key = Math.round(e / 1000) + '|' + depth + '|' + acts.length + '|' + acted;
+if (key === sentKey) return;
+sentKey = key;
+var body = {
+i: id,
+p: loc.pathname,
+q: loc.search.slice(0, 400),
+r: d.referrer.slice(0, 600),
+e: e,
+d: t - t0,
+s: depth,
+a: acts,
+w: w.innerWidth,
+l: n.language || '',
+x: acted,
+b: n.webdriver ? 1 : 0,
+m: n.maxTouchPoints > 1 ? 1 : 0,
+g: me && me.hasAttribute('data-nf') ? 1 : 0,
+};
+try {
+n.sendBeacon(to, JSON.stringify(body));
+} catch (e2) {}
+}
+var busy = false;
+function moved(ev) {
+if (ev && ev.type !== 'mousemove') acted = 1;
+if (busy) return;
+busy = true;
+setTimeout(function () {
+busy = false;
+}, 1000);
+active();
+}
+var opts = { passive: true, capture: true };
+['pointerdown', 'keydown', 'touchstart', 'wheel', 'mousemove'].forEach(function (type) {
+w.addEventListener(type, moved, opts);
+});
+var ticking = false;
+w.addEventListener('scroll', function () {
+acted = 1;
+moved();
+if (ticking) return;
+ticking = true;
+(w.requestAnimationFrame || setTimeout)(function () {
+ticking = false;
+measure();
+});
+}, opts);
+d.addEventListener('click', function (ev) {
+var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+if (!a) return;
+var u = new URL(a.href, loc.href);
+if ((u.protocol === 'http:' || u.protocol === 'https:') && u.hostname !== loc.hostname) {
+var parts = u.pathname.split('/').filter(Boolean);
+act('out', u.hostname.replace(/^www\./, '') + (/steampowered|itch\.io|youtube|reddit/.test(u.hostname) && parts.length ? '/' + parts.slice(0, 2).join('/') : ''));
+} else if (u.protocol === 'mailto:') act('out', 'email');
+}, opts);
+d.addEventListener('play', function (ev) {
+var v = ev.target;
+var src = (v && (v.currentSrc || v.src)) || '';
+act('play', src.split('/').pop().split('?')[0] || 'video');
+}, true);
+d.addEventListener('submit', function (ev) {
+var f = ev.target;
+var q = f && f.querySelector ? f.querySelector('input[type=search], input[name=q]') : null;
+if (q && q.value.trim()) {
+lastSearch = '';
+act('search', q.value.trim().toLowerCase().slice(0, 60));
+} else act('form', (f && (f.id || f.getAttribute('action'))) || 'form');
+}, true);
+d.addEventListener('input', function (ev) {
+var el = ev.target;
+if (el && (el.type === 'search' || el.name === 'q') && el.value.trim().length > 1) lastSearch = el.value.trim().toLowerCase().slice(0, 60);
+}, true);
+function hidden() {
+active();
+vis = false;
+send();
+}
+d.addEventListener('visibilitychange', function () {
+if (d.visibilityState === 'visible') {
+vis = seen = true;
+mark = now();
+} else hidden();
+});
+w.addEventListener('pagehide', hidden);
+w.addEventListener('pageshow', function (ev) {
+if (ev.persisted) start();
+});
+start();
+} catch (e) {}
+})();
+</script>
+</body>
+</html>
