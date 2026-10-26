@@ -43,9 +43,11 @@ function addedAt(file) {
 
 // ---- page title and descriptions
 const gameList = GAMES.map((g) => g.title);
-const title = feat ? `${NAME} · Indie games · ${feat.title}` : `${NAME} · Indie game studio`;
+const shown = feat ? [feat, ...GAMES.filter((g) => g !== feat)] : [];
+const title = feat ? `${NAME} · Indie games · ${shown.slice(0, 3).map((g) => g.title).join(", ")}` : `${NAME} · Indie game studio`;
+const alsoLine = shown.length > 1 ? " Also coming: " + shown.slice(1, 3).map((g) => `${g.title}, a ${(g.genre || "").toLowerCase()}`).join("; ") + "." : "";
 const description = feat
-  ? `${NAME} is an indie game studio. ${feat.title}: ${feat.pitch} ${!steamOf(feat) ? "Coming soon to Steam." : feat.status === "out" ? "Out now on Steam." : "Wishlist it on Steam."}`
+  ? `${NAME} is an indie game studio. ${feat.title}: ${feat.pitch} ${!steamOf(feat) ? "Coming soon to Steam." : feat.status === "out" ? "Out now on Steam." : "Wishlist it on Steam."}${alsoLine}`
   : `${NAME} is an independent game studio making games for Steam.`;
 const shortDesc = feat ? `${STUDIO.headline || ""} ${feat.title}: ${feat.pitch}`.trim() : description;
 
@@ -128,16 +130,19 @@ const heroTitle = feat
   : `<span class="lime">${esc(STUDIO.headline || NAME)}</span>`;
 const heroPitch = esc(feat ? feat.pitch : STUDIO.intro);
 const aboutHTML = paras(STUDIO.about).map((p) => `<p>${esc(p)}</p>`).join("");
-const detailHTML = feat ? `
-<div class="media"><div class="shots">${(feat.shots || []).slice(0, 4).map((s, i) => `<img src="${esc(s.replace("/shots/", "/thumbs/"))}" alt="${esc(feat.title)} screenshot ${i + 1}" loading="lazy" width="640" height="360">`).join("")}</div></div>
+const gameHTML = (g) => `
+<div class="media"><div class="shots">${(g.shots || []).slice(0, 4).map((s, i) => `<img src="${esc(s.replace("/shots/", "/thumbs/"))}" alt="${esc(g.title)} screenshot ${i + 1}" loading="lazy" width="640" height="360">`).join("")}</div></div>
 <div class="copy">
-<h3>${esc(feat.title)}</h3>
-<p class="g-intro">${esc(feat.genre)} · ${esc(statusText(feat))}${steamOf(feat) ? "" : " to Steam"}</p>
-${paras(feat.about).map((p) => `<p class="g-intro">${esc(p)}</p>`).join("")}
-${(feat.features || []).length ? `<ul class="features">${feat.features.map((f) => `<li><i aria-hidden="true"></i><span>${esc(f)}</span></li>`).join("")}</ul>` : ""}
-<p class="g-intro">Platforms: ${esc((feat.platforms || []).join(", "))}${feat.players ? ` · Players: ${esc(feat.players)}` : ""}</p>
+<h3>${esc(g.title)}</h3>
+<p class="g-intro">${esc(g.genre)} · ${esc(statusText(g))}${steamOf(g) ? "" : " to Steam"}</p>
+${paras(g.about).map((p) => `<p class="g-intro">${esc(p)}</p>`).join("")}
+${(g.features || []).length ? `<ul class="features">${g.features.map((f) => `<li><i aria-hidden="true"></i><span>${esc(f)}</span></li>`).join("")}</ul>` : ""}
+<p class="g-intro">Platforms: ${esc((g.platforms || []).join(", "))}${g.players ? ` · Players: ${esc(g.players)}` : ""}</p>
+${g.contentNote ? `<p class="g-intro">${esc(g.contentNote)}</p>` : ""}
 </div>
-` : "";
+`;
+const detailHTML = feat ? gameHTML(feat) : "";
+const moreHTML = shown.slice(1, 3).map((g, k) => `<div class="game-detail${k % 2 === 0 ? " flip" : ""}" id="game-${esc(g.id)}">${gameHTML(g)}</div>`).join("\n");
 
 // ---- write index.html
 let html = read("index.html");
@@ -152,6 +157,7 @@ fill("hero-title", heroTitle);
 fill("hero-pitch", heroPitch);
 fill("about", aboutHTML);
 fill("detail", detailHTML);
+fill("more", moreHTML);
 writeFileSync(new URL("index.html", root), html);
 
 // the privacy page's own "Last updated" date

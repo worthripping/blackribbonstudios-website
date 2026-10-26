@@ -4,7 +4,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://blackribbonstudios.com/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/capsule.jpg</image:loc></image:image>
     <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/logo.png</image:loc></image:image>
     <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-01.jpg</image:loc></image:image>
@@ -20,6 +20,19 @@
     <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-11.jpg</image:loc></image:image>
     <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-12.jpg</image:loc></image:image>
     <image:image><image:loc>https://blackribbonstudios.com/images/four-leaf-clover/shots/shot-13.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/capsule.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-01.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-02.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-03.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-04.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-05.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-06.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-07.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-08.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-09.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-10.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-11.jpg</image:loc></image:image>
+    <image:image><image:loc>https://blackribbonstudios.com/images/spares/shots/shot-12.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://blackribbonstudios.com/images/four-leaf-clover/trailer-poster.jpg</video:thumbnail_loc>
       <video:title>Find the Four Leaf Clover trailer</video:title>
@@ -27,9 +40,16 @@
       <video:content_loc>https://blackribbonstudios.com/videos/four-leaf-clover-trailer-wishlist.mp4</video:content_loc>
       <video:publication_date>2026-10-18T12:00:00+00:00</video:publication_date>
     </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://blackribbonstudios.com/images/spares/trailer-poster.jpg</video:thumbnail_loc>
+      <video:title>SPARES trailer</video:title>
+      <video:description>Official trailer for SPARES. A boy wakes on the rocks of a drowned fishing town at night. The Lantern Men are collecting the town's children.</video:description>
+      <video:content_loc>https://blackribbonstudios.com/videos/spares-trailer.mp4</video:content_loc>
+      <video:publication_date>2026-10-25T12:00:00+00:00</video:publication_date>
+    </video:video>
   </url>
   <url>
     <loc>https://blackribbonstudios.com/privacy</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-24</lastmod>
   </url>
 </urlset>

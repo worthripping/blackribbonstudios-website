@@ -40,6 +40,9 @@
      trailerDate    day the trailer came out, e.g. "2026-10-18" (helps Google show it in video results)
      trailerCredit  line shown under the trailer (music credits etc.)
      heroLogo  transparent logo image shown at the top of the page instead of the title
+     logo      transparent logo shown as the game's heading in its section (instead of plain text)
+     accent    colour for the game's section (bullet points, highlights), e.g. "#B9C7D6"
+     contentNote  a line shown under the facts, e.g. a mature content warning
      links     store links, e.g. steam: "https://store.steampowered.com/app/1234567/"
                Without a Steam link the game shows "Coming soon to Steam".
      art       colours for the poster-style cover (used when cover is "")
@@ -75,6 +78,7 @@ window.GAMES = [
     genre: "First-person search sim",
     status: "soon",
     featured: true,
+    bullet: "clover",
     hero: "clover-field",
     heroTitle: ["Find the", "Four Leaf", "Clover"],
     heroLogo: "images/four-leaf-clover/logo.png",
@@ -115,5 +119,49 @@ window.GAMES = [
     // Paste the store page link here, e.g. "https://store.steampowered.com/app/1234567/"
     links: { steam: "https://store.steampowered.com/app/5458410/Find_the_Four_Leaf_Clover/", itch: "" },
     art: { bg: "#1E4A2A", fg: "#D6F08C", band: "#0D0E11", bandFg: "#D6F08C" }
+  },
+  {
+    id: "spares",
+    title: "SPARES",
+    genre: "Wordless horror platformer",
+    status: "soon",
+    pitch: "A boy wakes on the rocks of a drowned fishing town at night. The Lantern Men are collecting the town's children.",
+    about: "A boy in a green raincoat wakes on the rocks of a fishing town the sea has half swallowed. It is night, it is raining, and the men in black oilskins are out with their lanterns.\n\nThe fish ran out years ago. The town found something else to sell.\n\nThe Lantern Men see only what their lamps light, and something blind waits under the black water, listening for a splash. Stay out of the light, swim without a sound, and find your way to the lighthouse.",
+    platforms: ["PC"],
+    players: "1 (singleplayer)",
+    tags: ["Horror", "Puzzle platformer", "Atmospheric", "Stealth", "2.5D"],
+    features: [
+      "A dark story told without a single word, through light, framing and sound",
+      "Stay out of the Lantern Men's light. Once they've seen you, they will run you down",
+      "Something blind lives under the black water and hunts by sound",
+      "Physical puzzles: crates, cannery hooks, a bucket hoist, an old diving bell",
+      "No HUD, no text, no tutorials. The world teaches you",
+      "Quick, fair deaths: you're back a few steps later"
+    ],
+    contentNote: "Mature content: horror violence and the deaths of children.",
+    cover: "images/spares/capsule.jpg",
+    logo: "images/spares/logo.png",
+    accent: "#B9C7D6",
+    // The screenshots and trailer from the Steam page, in the same order as on Steam
+    shots: [
+      "images/spares/shots/shot-01.jpg",
+      "images/spares/shots/shot-02.jpg",
+      "images/spares/shots/shot-03.jpg",
+      "images/spares/shots/shot-04.jpg",
+      "images/spares/shots/shot-05.jpg",
+      "images/spares/shots/shot-06.jpg",
+      "images/spares/shots/shot-07.jpg",
+      "images/spares/shots/shot-08.jpg",
+      "images/spares/shots/shot-09.jpg",
+      "images/spares/shots/shot-10.jpg",
+      "images/spares/shots/shot-11.jpg",
+      "images/spares/shots/shot-12.jpg"
+    ],
+    trailer: "videos/spares-trailer.mp4",
+    trailerPoster: "images/spares/trailer-poster.jpg",
+    trailerDate: "2026-10-25",
+    // Paste the store page link here once Valve has approved the page, e.g. "https://store.steampowered.com/app/5508140/"
+    links: { steam: "", itch: "" },
+    art: { bg: "#1B2330", fg: "#E8E4DA", band: "#0A0C10", bandFg: "#B9C7D6" }
   }
 ];

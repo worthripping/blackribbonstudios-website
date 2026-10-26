@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- seo:head -->
-<title>Black Ribbon Studios · Indie games · Find the Four Leaf Clover</title>
-<meta name="description" content="Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Wishlist it on Steam.">
+<title>Black Ribbon Studios · Indie games · Find the Four Leaf Clover, SPARES</title>
+<meta name="description" content="Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Wishlist it on Steam. Also coming: SPARES, a wordless horror platformer.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="Black Ribbon Studios">
 <link rel="canonical" href="https://blackribbonstudios.com/">
@@ -218,7 +218,14 @@ dialog.viewer::backdrop { background: rgba(0,0,0,.85); }
 .game-detail .g-intro { margin: 0; color: color-mix(in srgb, var(--ink) 82%, transparent); font-size: 18px; max-width: 46ch; }
 .features { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .features li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; align-items: start; }
-.features svg { width: 20px; height: 20px; margin-top: 3px; color: var(--lime); }
+.features svg { width: 20px; height: 20px; margin-top: 3px; color: var(--g-accent, var(--lime)); }
+.game-detail + .game-detail { margin-top: clamp(64px, 9vw, 120px); padding-top: clamp(56px, 8vw, 104px); border-top: 1px solid var(--line); }
+.game-detail.flip { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.game-detail.flip .media { order: 2; }
+.game-detail h3 .g-logo { display: block; width: min(100%, 440px); height: auto; }
+.game-detail .note { margin: -4px 0 0; display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.45; color: var(--muted); }
+.game-detail .note svg { flex: none; width: 18px; height: 18px; margin-top: 1px; color: var(--g-accent, var(--muted)); }
+.dot-icon { display: block; width: 20px; height: 20px; margin-top: 3px; color: var(--g-accent, var(--lime)); }
 .facts { display: flex; flex-wrap: wrap; margin: 4px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .facts div { padding: 12px 22px 12px 0; display: grid; gap: 4px; }
 .facts div + div { padding-left: 22px; border-left: 1px solid var(--line); }
@@ -363,6 +370,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .game-detail, .about, .contact .wrap { grid-template-columns: minmax(0, 1fr); }
   .game-detail .media { position: static; }
+  .game-detail.flip { grid-template-columns: minmax(0, 1fr); }
+  .game-detail.flip .media { order: 0; }
 }
 @media (max-width: 560px) { .cform .row { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 700px) {
@@ -432,8 +441,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
    "@type": "WebPage",
    "@id": "https://blackribbonstudios.com/#page",
    "url": "https://blackribbonstudios.com/",
-   "name": "Black Ribbon Studios · Indie games · Find the Four Leaf Clover",
-   "description": "Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Wishlist it on Steam.",
+   "name": "Black Ribbon Studios · Indie games · Find the Four Leaf Clover, SPARES",
+   "description": "Black Ribbon Studios is an indie game studio. Find the Four Leaf Clover: One field. Millions of clovers. Exactly one of them has four leaves. Wishlist it on Steam. Also coming: SPARES, a wordless horror platformer.",
    "isPartOf": {
     "@id": "https://blackribbonstudios.com/#website"
    },
@@ -443,7 +452,7 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
    "mainEntity": {
     "@id": "https://blackribbonstudios.com/#four-leaf-clover"
    },
-   "dateModified": "2026-10-20"
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "VideoGame",
@@ -506,6 +515,63 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
    "sameAs": [
     "https://store.steampowered.com/app/5458410/Find_the_Four_Leaf_Clover/"
    ]
+  },
+  {
+   "@type": "VideoGame",
+   "@id": "https://blackribbonstudios.com/#spares",
+   "name": "SPARES",
+   "url": "https://blackribbonstudios.com/#spares",
+   "description": "A boy in a green raincoat wakes on the rocks of a fishing town the sea has half swallowed. It is night, it is raining, and the men in black oilskins are out with their lanterns. The fish ran out years ago. The town found something else to sell. The Lantern Men see only what their lamps light, and something blind waits under the black water, listening for a splash. Stay out of the light, swim without a sound, and find your way to the lighthouse.",
+   "genre": [
+    "Wordless horror platformer",
+    "Horror",
+    "Puzzle platformer",
+    "Atmospheric",
+    "Stealth",
+    "2.5D"
+   ],
+   "gamePlatform": [
+    "PC"
+   ],
+   "operatingSystem": "Windows",
+   "applicationCategory": "Game",
+   "playMode": [
+    "SinglePlayer"
+   ],
+   "numberOfPlayers": {
+    "@type": "QuantitativeValue",
+    "minValue": 1,
+    "maxValue": 1
+   },
+   "author": {
+    "@id": "https://blackribbonstudios.com/#studio"
+   },
+   "publisher": {
+    "@id": "https://blackribbonstudios.com/#studio"
+   },
+   "image": "https://blackribbonstudios.com/images/spares/capsule.jpg",
+   "screenshot": [
+    "https://blackribbonstudios.com/images/spares/shots/shot-01.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-02.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-03.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-04.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-05.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-06.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-07.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-08.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-09.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-10.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-11.jpg",
+    "https://blackribbonstudios.com/images/spares/shots/shot-12.jpg"
+   ],
+   "trailer": {
+    "@type": "VideoObject",
+    "name": "SPARES trailer",
+    "description": "Official trailer for SPARES. A boy wakes on the rocks of a drowned fishing town at night. The Lantern Men are collecting the town's children.",
+    "thumbnailUrl": "https://blackribbonstudios.com/images/spares/trailer-poster.jpg",
+    "contentUrl": "https://blackribbonstudios.com/videos/spares-trailer.mp4",
+    "uploadDate": "2026-10-25T12:00:00+00:00"
+   }
   }
  ]
 }
@@ -569,8 +635,20 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 <p class="g-intro">Somewhere in this field is a single four-leaf clover. Everything else has three. Pick clovers, sell them, and upgrade from bare hands to scissors to tools that have no business being anywhere near a clover patch.</p><p class="g-intro">The dowsing rod, the dog and the drone are out there too, if you can afford them. Finding it will take a while. That's the point.</p>
 <ul class="features"><li><i aria-hidden="true"></i><span>One huge field, and exactly one four-leaf clover in it</span></li><li><i aria-hidden="true"></i><span>Pick clovers and sell them to pay for upgrades</span></li><li><i aria-hidden="true"></i><span>Work your way up from bare hands to scissors and faster tools</span></li><li><i aria-hidden="true"></i><span>Save up for the dowsing rod, the dog and the drone</span></li><li><i aria-hidden="true"></i><span>Hunt alone or with up to three friends in online co-op</span></li><li><i aria-hidden="true"></i><span>Takes a while to find. That's the whole point</span></li></ul>
 <p class="g-intro">Platforms: PC · Players: 1–4 (solo or online co-op)</p>
+
 </div>
 <!-- /seo:detail --></div>
+      <div id="details-more"><!-- seo:more --><div class="game-detail flip" id="game-spares">
+<div class="media"><div class="shots"><img src="images/spares/thumbs/shot-01.jpg" alt="SPARES screenshot 1" loading="lazy" width="640" height="360"><img src="images/spares/thumbs/shot-02.jpg" alt="SPARES screenshot 2" loading="lazy" width="640" height="360"><img src="images/spares/thumbs/shot-03.jpg" alt="SPARES screenshot 3" loading="lazy" width="640" height="360"><img src="images/spares/thumbs/shot-04.jpg" alt="SPARES screenshot 4" loading="lazy" width="640" height="360"></div></div>
+<div class="copy">
+<h3>SPARES</h3>
+<p class="g-intro">Wordless horror platformer · Coming soon to Steam</p>
+<p class="g-intro">A boy in a green raincoat wakes on the rocks of a fishing town the sea has half swallowed. It is night, it is raining, and the men in black oilskins are out with their lanterns.</p><p class="g-intro">The fish ran out years ago. The town found something else to sell.</p><p class="g-intro">The Lantern Men see only what their lamps light, and something blind waits under the black water, listening for a splash. Stay out of the light, swim without a sound, and find your way to the lighthouse.</p>
+<ul class="features"><li><i aria-hidden="true"></i><span>A dark story told without a single word, through light, framing and sound</span></li><li><i aria-hidden="true"></i><span>Stay out of the Lantern Men's light. Once they've seen you, they will run you down</span></li><li><i aria-hidden="true"></i><span>Something blind lives under the black water and hunts by sound</span></li><li><i aria-hidden="true"></i><span>Physical puzzles: crates, cannery hooks, a bucket hoist, an old diving bell</span></li><li><i aria-hidden="true"></i><span>No HUD, no text, no tutorials. The world teaches you</span></li><li><i aria-hidden="true"></i><span>Quick, fair deaths: you're back a few steps later</span></li></ul>
+<p class="g-intro">Platforms: PC · Players: 1 (singleplayer)</p>
+<p class="g-intro">Mature content: horror violence and the deaths of children.</p>
+</div>
+</div><!-- /seo:more --></div>
       <div class="more" id="more" hidden>
         <div class="more-head">
           <span class="eyebrow">More from the studio</span>
@@ -674,8 +752,8 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-<script src="games.js?v=20261022-1"></script>
-<script src="clover-field.js?v=20261022-1"></script>
+<script src="games.js?v=20261026-1"></script>
+<script src="clover-field.js?v=20261026-1"></script>
 <script>
 (function () {
   "use strict";
@@ -874,29 +952,43 @@ dialog.game::backdrop { background: rgba(4,5,6,.78); backdrop-filter: blur(4px);
   /* ---------- The game in detail ---------- */
   $("#game-count").textContent = (GAMES.length === 1 ? "A game" : GAMES.length + " games") + " from Black Ribbon Studios";
   $("#empty").hidden = GAMES.length > 0;
-  if (feat) {
-    var fItems = mediaItems(feat);
-    var firstShot = fItems.length && fItems[0].type !== "image" ? 1 : 0;
-    var shotItems = fItems.slice(firstShot);
+  var DOT_ICON = '<svg class="dot-icon" viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="6" height="6" transform="rotate(45 10 10)" fill="currentColor"/></svg>';
+  var WARN_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 2.8 19.5h18.4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4.2M12 16.8v.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  function detailHTML(g, n) {
+    var items = mediaItems(g);
+    var firstShot = items.length && items[0].type !== "image" ? 1 : 0;
+    var shotItems = items.slice(firstShot);
     var visible = shotItems.slice(0, 4);
-    var facts = [["Platforms", (feat.platforms || []).join(", ")], ["Players", feat.players], ["Genre", feat.genre], ["Status", STATUS[statusOf(feat)].label]]
+    var bullet = g.bullet === "clover" ? CHECK_ICON : DOT_ICON;
+    var facts = [["Platforms", (g.platforms || []).join(", ")], ["Players", g.players], ["Genre", g.genre], ["Status", STATUS[statusOf(g)].label]]
       .filter(function (f) { return f[1]; })
       .map(function (f) { return "<div><dt>" + f[0] + "</dt><dd>" + esc(f[1]) + "</dd></div>"; }).join("");
-    $("#detail").innerHTML =
-      '<div class="media">' + (trailerBlock(feat, "detail-trailer") ||
-        '<a href="#' + esc(feat.id) + '" aria-label="More about ' + esc(feat.title) + '">' + coverHTML(feat, null, true) + "</a>") +
-      (feat.trailerCredit && fItems.length && fItems[0].type === "video" ? '<p class="credit">' + esc(feat.trailerCredit) + "</p>" : "") +
+    return '<div class="media">' + (trailerBlock(g, "trailer-" + g.id) ||
+        '<a href="#' + esc(g.id) + '" aria-label="More about ' + esc(g.title) + '">' + coverHTML(g, null, n === 0) + "</a>") +
+      (g.trailerCredit && items.length && items[0].type === "video" ? '<p class="credit">' + esc(g.trailerCredit) + "</p>" : "") +
       (visible.length ? '<div class="shots">' + visible.map(function (it, i) {
         var extra = i === visible.length - 1 ? shotItems.length - visible.length : 0;
-        return '<button type="button" data-viewer="' + esc(feat.id) + '" data-index="' + (firstShot + i) + '" aria-label="Open screenshot ' + (i + 1) + ' of ' + shotItems.length + '">' +
-          '<img src="' + esc(it.thumb) + '" alt="' + esc(feat.title) + ' screenshot ' + (i + 1) + '" loading="lazy" decoding="async">' + (extra > 0 ? '<span class="more-count">+' + extra + "</span>" : "") + "</button>";
+        return '<button type="button" data-viewer="' + esc(g.id) + '" data-index="' + (firstShot + i) + '" aria-label="Open ' + esc(g.title) + ' screenshot ' + (i + 1) + ' of ' + shotItems.length + '">' +
+          '<img src="' + esc(it.thumb) + '" alt="' + esc(g.title) + ' screenshot ' + (i + 1) + '" loading="lazy" decoding="async">' + (extra > 0 ? '<span class="more-count">+' + extra + "</span>" : "") + "</button>";
       }).join("") + "</div>" : "") + "</div>" +
-      '<div class="copy"><div class="hero-meta">' + pill(feat) + '<span class="eyebrow">' + esc(feat.genre) + "</span></div>" +
-      "<h3>" + esc(feat.title) + "</h3>" +
-      '<p class="g-intro">' + esc(firstPara(feat.about) || feat.pitch) + "</p>" +
-      ((feat.features || []).length ? '<ul class="features">' + feat.features.map(function (f) { return "<li>" + CHECK_ICON + "<span>" + esc(f) + "</span></li>"; }).join("") + "</ul>" : "") +
+      '<div class="copy"><div class="hero-meta">' + pill(g) + '<span class="eyebrow">' + esc(g.genre) + "</span></div>" +
+      "<h3>" + (safeUrl(g.logo) || /^images\//.test(g.logo || "") ? '<img class="g-logo" src="' + esc(g.logo) + '" alt="' + esc(g.title) + '" loading="lazy">' : esc(g.title)) + "</h3>" +
+      '<p class="g-intro">' + esc(firstPara(g.about) || g.pitch) + "</p>" +
+      ((g.features || []).length ? '<ul class="features">' + g.features.map(function (f) { return "<li>" + bullet + "<span>" + esc(f) + "</span></li>"; }).join("") + "</ul>" : "") +
       '<dl class="facts">' + facts + "</dl>" +
-      '<div class="actions">' + storeButtons(feat, true) + '<a class="btn ghost" href="#' + esc(feat.id) + '">Read more</a></div></div>';
+      (g.contentNote ? '<p class="note">' + WARN_ICON + "<span>" + esc(g.contentNote) + "</span></p>" : "") +
+      '<div class="actions">' + storeButtons(g, true) + '<a class="btn ghost" href="#' + esc(g.id) + '">Read more</a></div></div>';
+  }
+  function accentStyle(g) { return g.accent ? "--g-accent:" + safeColor(g.accent, "#D6F08C") : ""; }
+  // The featured game and the next two get a full section each; any further games go in the grid below.
+  var DETAILED = feat ? [feat].concat(OTHERS.slice(0, 2)) : [];
+  OTHERS = OTHERS.slice(2);
+  if (feat) {
+    $("#detail").innerHTML = detailHTML(feat, 0);
+    $("#detail").setAttribute("style", accentStyle(feat));
+    $("#details-more").outerHTML = DETAILED.slice(1).map(function (g, k) {
+      return '<div class="game-detail' + (k % 2 === 0 ? " flip" : "") + '" id="game-' + esc(g.id) + '" style="' + esc(accentStyle(g)) + '">' + detailHTML(g, k + 1) + "</div>";
+    }).join("");
   } else {
     $("#detail").hidden = true;
   }
