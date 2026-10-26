@@ -104,7 +104,7 @@ const games = GAMES.map((g) => {
     description: paras(g.about).join(" ") || g.pitch,
     genre: [g.genre, ...(g.tags || [])].filter(Boolean),
     gamePlatform: g.platforms || ["PC"],
-    operatingSystem: "Windows",
+    operatingSystem: (g.platforms || []).some((x) => /mac/i.test(x)) ? "Windows, macOS" : "Windows",
     applicationCategory: "Game",
     playMode: /co-?op|multi/i.test(`${g.players || ""} ${(g.tags || []).join(" ")}`) ? ["SinglePlayer", "CoOp", "MultiPlayer"] : ["SinglePlayer"],
     ...(g.players ? { numberOfPlayers: { "@type": "QuantitativeValue", minValue: 1, maxValue: Number((String(g.players).match(/(\d+)\s*[–-]\s*(\d+)/) || [])[2]) || 1 } } : {}),

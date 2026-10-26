@@ -127,7 +127,7 @@ window.GAMES = [
     status: "soon",
     pitch: "A boy wakes on the rocks of a drowned fishing town at night. The Lantern Men are collecting the town's children.",
     about: "A boy in a green raincoat wakes on the rocks of a fishing town the sea has half swallowed. It is night, it is raining, and the men in black oilskins are out with their lanterns.\n\nThe fish ran out years ago. The town found something else to sell.\n\nThe Lantern Men see only what their lamps light, and something blind waits under the black water, listening for a splash. Stay out of the light, swim without a sound, and find your way to the lighthouse.",
-    platforms: ["PC"],
+    platforms: ["PC", "Mac"],
     players: "1 (singleplayer)",
     tags: ["Horror", "Puzzle platformer", "Atmospheric", "Stealth", "2.5D"],
     features: [
