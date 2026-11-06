@@ -1,4 +1,4 @@
-/* Black Ribbon Studios: contact form.
+/* Black Ribbon Studios: contact form (also used by clipabay.com/contact).
    Receives the form on blackribbonstudios.com/api/contact and emails it to the
    studio inbox through Cloudflare Email Routing. Replying to the email in Gmail
    goes straight to the visitor (their address is set as Reply-To). */
@@ -11,9 +11,15 @@ const FROM_NAME = "Black Ribbon Studios website";
 const ALLOWED_ORIGINS = [
   "https://blackribbonstudios.com",
   "https://www.blackribbonstudios.com",
-  "https://blackribbonstudios-website.pages.dev"
+  "https://blackribbonstudios-website.pages.dev",
+  "https://clipabay.com",
+  "https://www.clipabay.com"
 ];
-const TOPICS = ["General question", "Bug report", "Press", "Business", "Something else"];
+// Which site a message came from: its name in the email, and where to send people back to without JavaScript.
+const SITES = {
+  "clipabay.com": { name: "Clipabay", back: "https://clipabay.com/contact" }
+};
+const TOPICS = ["General question", "Question", "Bug report", "Feature request", "Press", "Business", "Something else"];
 const MIN_FILL_MS = 3000;          // faster than this is a bot
 const LIMITS = { name: 100, email: 200, message: 5000 };
 
@@ -36,6 +42,8 @@ export default {
       return new Response("This address only accepts the contact form.", { status: 405, headers: { Allow: "POST, OPTIONS" } });
     }
 
+    const host = (() => { try { return new URL(origin || request.headers.get("Referer") || "").hostname.replace(/^www\./, ""); } catch { return ""; } })();
+    const site = SITES[host] || null;
     const wantsJson = (request.headers.get("Accept") || "").includes("application/json");
     const reply = (ok, error, status) => {
       if (wantsJson) {
@@ -45,6 +53,7 @@ export default {
         });
       }
       // Works without JavaScript too: send the visitor back to the page.
+      if (site) return Response.redirect(site.back + "?" + (ok ? "sent=1" : "error=1"), 303);
       return Response.redirect("https://blackribbonstudios.com/?" + (ok ? "sent=1" : "error=1") + "#contact", 303);
     };
 
@@ -65,6 +74,7 @@ export default {
     const message = clean(data.message, LIMITS.message);
     const topic = TOPICS.includes(data.topic) ? data.topic : "General question";
     const page = clean(data.page, 300);
+    const device = clean(data.device, 600);
 
     // Spam traps: a hidden field people never see, and a form filled in too fast.
     if (clean(data.website, 200)) return reply(true);
@@ -83,13 +93,14 @@ export default {
       "Topic:   " + topic + "\n" +
       (page ? "Page:    " + page + "\n" : "") +
       (country ? "Country: " + country + "\n" : "") +
+      (device ? "Device:  " + device + "\n" : "") +
       "Sent:    " + new Date().toUTCString() + "\n\n" +
       "Hit Reply to answer " + name + " directly.\n";
 
     const raw = buildMime({
-      fromName: FROM_NAME, from: FROM, to: TO,
+      fromName: site ? site.name + " website" : FROM_NAME, from: FROM, to: TO,
       replyName: name, replyTo: email,
-      subject: "[" + topic + "] " + name + " via blackribbonstudios.com",
+      subject: "[" + (site ? site.name + ": " : "") + topic + "] " + name + " via " + (site ? host : "blackribbonstudios.com"),
       text: body
     });
 
